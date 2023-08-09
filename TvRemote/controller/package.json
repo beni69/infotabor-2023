@@ -1,0 +1,14 @@
+{
+  "name": "controller",
+  "version": "1.0.0",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {},
+  "dependencies": {
+    "serialport": "^11.0.1"
+  },
+  "devDependencies": {
+    "@types/node": "^20.4.9",
+    "tsm": "^2.3.0"
+  }
+}
