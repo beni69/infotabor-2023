@@ -1,6 +1,6 @@
 [package]
 edition = "2021"
-name = "tvremote-relay"
+name = "roblib-ctrl-relay"
 version = "0.1.0"
 
 [dependencies]
