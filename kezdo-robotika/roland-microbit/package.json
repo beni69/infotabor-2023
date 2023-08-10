@@ -1,0 +1,16 @@
+{
+    "name": "roblib-starter",
+    "version": "2.0.0-alpha.1",
+    "main": "src/index.js",
+    "author": "kareszklub (https://github.com/kareszklub) (beni69 <beni@karesz.xyz> https://github.com/beni69)",
+    "license": "MIT",
+    "type": "module",
+    "scripts": {
+        "start": "node ."
+    },
+    "dependencies": {
+        "@kareszklub/roblib-client-node": "^0.0.3",
+        "@serialport/parser-readline": "^11.0.1",
+        "serialport": "^11.0.1"
+    }
+}

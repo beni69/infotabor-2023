@@ -1,0 +1,230 @@
+lockfileVersion: '6.0'
+
+dependencies:
+  '@kareszklub/roblib-client-node':
+    specifier: ^0.0.3
+    version: 0.0.3
+  '@serialport/parser-readline':
+    specifier: ^11.0.1
+    version: 11.0.1
+  serialport:
+    specifier: ^11.0.1
+    version: 11.0.1
+
+packages:
+
+  /@kareszklub/roblib-client-node-darwin-x64@0.0.3:
+    resolution: {integrity: sha512-ovahVXsmYacJtdD2VOf5J+C6lryg6BJRh1aAqmQoPhP6rKANC/eGXtMTrS2TXDBAtPIE5WN2j1eu/Hw5Yt0xzA==}
+    engines: {node: '>= 10'}
+    cpu: [x64]
+    os: [darwin]
+    requiresBuild: true
+    dev: false
+    optional: true
+
+  /@kareszklub/roblib-client-node-linux-arm-gnueabihf@0.0.3:
+    resolution: {integrity: sha512-OhaonOMIdaaaaWK2+GrWeCMdsB5VP47UtnKsnVIU5NwtFwxoGH1uus+1uJuSEY8rtdb9VWQcsVFX5yw45tNJBg==}
+    engines: {node: '>= 10'}
+    cpu: [arm]
+    os: [linux]
+    requiresBuild: true
+    dev: false
+    optional: true
+
+  /@kareszklub/roblib-client-node-linux-arm64-gnu@0.0.3:
+    resolution: {integrity: sha512-zN9o27VTn2iKqaTtdMYcoz/glLoOVXqMMsJaiUHuINBccCtIGR7TnqopZOCnA1UgqLiubtrtJ4nIPlA7mIV+iw==}
+    engines: {node: '>= 10'}
+    cpu: [arm64]
+    os: [linux]
+    requiresBuild: true
+    dev: false
+    optional: true
+
+  /@kareszklub/roblib-client-node-linux-x64-gnu@0.0.3:
+    resolution: {integrity: sha512-2CbSPP6jVXvt7Gkvz4WAAJM35/Jh5IPiCeHJE9D4fV1edw52c/ZQ7onFi/6hwySY1M5THqdEEtRE3LzzaaIUjQ==}
+    engines: {node: '>= 10'}
+    cpu: [x64]
+    os: [linux]
+    requiresBuild: true
+    dev: false
+    optional: true
+
+  /@kareszklub/roblib-client-node-linux-x64-musl@0.0.3:
+    resolution: {integrity: sha512-U9rB+rtOzFOJN3uGkV1If1f2Ljg+I2XZmBOUO1mov/ifqW1x8WepUUp0NKPKTjVRWAoMCwf+0icjJEMWD5ul6g==}
+    engines: {node: '>= 10'}
+    cpu: [x64]
+    os: [linux]
+    requiresBuild: true
+    dev: false
+    optional: true
+
+  /@kareszklub/roblib-client-node-win32-x64-msvc@0.0.3:
+    resolution: {integrity: sha512-N4AJtMRvfDrBW9agLAQIyBTlEwmfEEOeudKUERqI2wLurxRfSIzWtUlIRomdcNRFiEeKQoF0oCF/e2odo98qRw==}
+    engines: {node: '>= 10'}
+    cpu: [x64]
+    os: [win32]
+    requiresBuild: true
+    dev: false
+    optional: true
+
+  /@kareszklub/roblib-client-node@0.0.3:
+    resolution: {integrity: sha512-Yvf8oRx8iT4WyyAj04dOJRRW3CfUFFbWF+fRSIM5EVOEz90Ucm2u+P8lLBA6wYB6W/Uyr3lHAKE4wuBXbITGOw==}
+    engines: {node: '>= 10'}
+    optionalDependencies:
+      '@kareszklub/roblib-client-node-darwin-x64': 0.0.3
+      '@kareszklub/roblib-client-node-linux-arm-gnueabihf': 0.0.3
+      '@kareszklub/roblib-client-node-linux-arm64-gnu': 0.0.3
+      '@kareszklub/roblib-client-node-linux-x64-gnu': 0.0.3
+      '@kareszklub/roblib-client-node-linux-x64-musl': 0.0.3
+      '@kareszklub/roblib-client-node-win32-x64-msvc': 0.0.3
+    dev: false
+
+  /@serialport/binding-mock@10.2.2:
+    resolution: {integrity: sha512-HAFzGhk9OuFMpuor7aT5G1ChPgn5qSsklTFOTUX72Rl6p0xwcSVsRtG/xaGp6bxpN7fI9D/S8THLBWbBgS6ldw==}
+    engines: {node: '>=12.0.0'}
+    dependencies:
+      '@serialport/bindings-interface': 1.2.2
+      debug: 4.3.4
+    transitivePeerDependencies:
+      - supports-color
+    dev: false
+
+  /@serialport/bindings-cpp@11.0.3:
+    resolution: {integrity: sha512-xgNDJ7pHHZCJMoDsEH+D8q5CV+V3RGN4/jLEG9SQ7q6kh+o03axV0l/upPHZ0HW4tTXpGgqPIGbXOTrD4RGQQA==}
+    engines: {node: '>=14.0.0'}
+    requiresBuild: true
+    dependencies:
+      '@serialport/bindings-interface': 1.2.2
+      '@serialport/parser-readline': 11.0.0
+      debug: 4.3.4
+      node-addon-api: 6.1.0
+      node-gyp-build: 4.6.0
+    transitivePeerDependencies:
+      - supports-color
+    dev: false
+
+  /@serialport/bindings-interface@1.2.2:
+    resolution: {integrity: sha512-CJaUd5bLvtM9c5dmO9rPBHPXTa9R2UwpkJ0wdh9JCYcbrPWsKz+ErvR0hBLeo7NPeiFdjFO4sonRljiw4d2XiA==}
+    engines: {node: ^12.22 || ^14.13 || >=16}
+    dev: false
+
+  /@serialport/parser-byte-length@11.0.1:
+    resolution: {integrity: sha512-UsffR5b3NHwhjJzsWv5fZMkoq3wGNyUcRTA9jlu02w+2kMlBRJPzlPVB5szVX0VWUEqkCg+3VaU2XWuYr+uAUA==}
+    engines: {node: '>=12.0.0'}
+    dev: false
+
+  /@serialport/parser-cctalk@11.0.1:
+    resolution: {integrity: sha512-klzVQfRcC1m0SVDV2Dy9hHfwweO2/mUMUyuXK04FRkKHy5/AdETmk9KTVVVVfpDCSysvHoyQPwiDFq8ddwX3cQ==}
+    engines: {node: '>=12.0.0'}
+    dev: false
+
+  /@serialport/parser-delimiter@11.0.0:
+    resolution: {integrity: sha512-aZLJhlRTjSmEwllLG7S4J8s8ctRAS0cbvCpO87smLvl3e4BgzbVgF6Z6zaJd3Aji2uSiYgfedCdNc4L6W+1E2g==}
+    engines: {node: '>=12.0.0'}
+    dev: false
+
+  /@serialport/parser-delimiter@11.0.1:
+    resolution: {integrity: sha512-NAsYa3OFt2xEnj/+0BRkQP2qkRNbXBPEq6uFJEdNdzcTSF+BTRXkoIRrWBq3N6koovPqW6lnbxc/iJYe5AX/2Q==}
+    engines: {node: '>=12.0.0'}
+    dev: false
+
+  /@serialport/parser-inter-byte-timeout@11.0.1:
+    resolution: {integrity: sha512-PEFV9dSpW+ptH1rLhdB9KgE+rbJ/FvQiZz0mx+4jkv/Po4g3PNsEEMXfMW0aQVSFVsmitvmE0jHlhGjLv8GQEg==}
+    engines: {node: '>=12.0.0'}
+    dev: false
+
+  /@serialport/parser-packet-length@11.0.1:
+    resolution: {integrity: sha512-KwPu8dsAI+eN4fnUS1vVmrOpUtBK4p9L9cHhwn5ZmfcvwvZMHp/J+IEu7xH0g5aM1/8QEoaql26BQP+sZ71NQQ==}
+    engines: {node: '>=8.6.0'}
+    dev: false
+
+  /@serialport/parser-readline@11.0.0:
+    resolution: {integrity: sha512-rRAivhRkT3YO28WjmmG4FQX6L+KMb5/ikhyylRfzWPw0nSXy97+u07peS9CbHqaNvJkMhH1locp2H36aGMOEIA==}
+    engines: {node: '>=12.0.0'}
+    dependencies:
+      '@serialport/parser-delimiter': 11.0.0
+    dev: false
+
+  /@serialport/parser-readline@11.0.1:
+    resolution: {integrity: sha512-wkJ3EI733+yhbi7eBWzs/qn8+cfIBcYQjfrILPNqslAy6VlgdKw+pHoblDFmg78GN0TqGUDSWlTJ65oLEPVp5Q==}
+    engines: {node: '>=12.0.0'}
+    dependencies:
+      '@serialport/parser-delimiter': 11.0.1
+    dev: false
+
+  /@serialport/parser-ready@11.0.1:
+    resolution: {integrity: sha512-v/bvlgKhrNt+SVLSqlfXCO1HEinfRRMGnzqbpdVCgu2SiWIEenCLjs51JisKVYQoQFcXdP/EHZnzm7NPXHDlAg==}
+    engines: {node: '>=12.0.0'}
+    dev: false
+
+  /@serialport/parser-regex@11.0.1:
+    resolution: {integrity: sha512-Lf3k7qibYqZ0+/wX3UA8fRng3WtQ+UyLpjQhG1COs6OBSq5/I5tYXczfhlrbA0gHo1qzgzr2V2t7m6FoBSc81Q==}
+    engines: {node: '>=12.0.0'}
+    dev: false
+
+  /@serialport/parser-slip-encoder@11.0.1:
+    resolution: {integrity: sha512-l4mXsAGzpmPO7+uqKJqtPDW643irfnGEWbiy34FoYvuOs8n0SmiMtgQZFAtvlTNQCRWE2tykF/WG6K/McJthDw==}
+    engines: {node: '>=12.0.0'}
+    dev: false
+
+  /@serialport/parser-spacepacket@11.0.1:
+    resolution: {integrity: sha512-Lq7fXoOsLOMo4XEt9HB31zV5LhrteXlsOy2o6r39TfRwU6x8Nou9jQMA9vW0a6yPra5zwsHIaNrA6tDOGj2Ozg==}
+    engines: {node: '>=12.0.0'}
+    dev: false
+
+  /@serialport/stream@11.0.1:
+    resolution: {integrity: sha512-6pjyKRg8MQuvhGfg36+PF7K5eGNQcEswCSiAg1UPilqqFS8X1QnaiSCn5UFp/hCN+pAtlFjkOi0ztvtmSI7n4g==}
+    engines: {node: '>=12.0.0'}
+    dependencies:
+      '@serialport/bindings-interface': 1.2.2
+      debug: 4.3.4
+    transitivePeerDependencies:
+      - supports-color
+    dev: false
+
+  /debug@4.3.4:
+    resolution: {integrity: sha512-PRWFHuSU3eDtQJPvnNY7Jcket1j0t5OuOsFzPPzsekD52Zl8qUfFIPEiswXqIvHWGVHOgX+7G/vCNNhehwxfkQ==}
+    engines: {node: '>=6.0'}
+    peerDependencies:
+      supports-color: '*'
+    peerDependenciesMeta:
+      supports-color:
+        optional: true
+    dependencies:
+      ms: 2.1.2
+    dev: false
+
+  /ms@2.1.2:
+    resolution: {integrity: sha512-sGkPx+VjMtmA6MX27oA4FBFELFCZZ4S4XqeGOXCv68tT+jb3vk/RyaKWP0PTKyWtmLSM0b+adUTEvbs1PEaH2w==}
+    dev: false
+
+  /node-addon-api@6.1.0:
+    resolution: {integrity: sha512-+eawOlIgy680F0kBzPUNFhMZGtJ1YmqM6l4+Crf4IkImjYrO/mqPwRMh352g23uIaQKFItcQ64I7KMaJxHgAVA==}
+    dev: false
+
+  /node-gyp-build@4.6.0:
+    resolution: {integrity: sha512-NTZVKn9IylLwUzaKjkas1e4u2DLNcV4rdYagA4PWdPwW87Bi7z+BznyKSRwS/761tV/lzCGXplWsiaMjLqP2zQ==}
+    hasBin: true
+    dev: false
+
+  /serialport@11.0.1:
+    resolution: {integrity: sha512-j/ntDuewAkqL6g5wKjwV2RTyLBL9cpob8aRd3yLAViYApTsJoYqRleyuzst0OboNTBjBsoxQ4YKYhuYHi1XViQ==}
+    engines: {node: '>=12.0.0'}
+    dependencies:
+      '@serialport/binding-mock': 10.2.2
+      '@serialport/bindings-cpp': 11.0.3
+      '@serialport/parser-byte-length': 11.0.1
+      '@serialport/parser-cctalk': 11.0.1
+      '@serialport/parser-delimiter': 11.0.1
+      '@serialport/parser-inter-byte-timeout': 11.0.1
+      '@serialport/parser-packet-length': 11.0.1
+      '@serialport/parser-readline': 11.0.1
+      '@serialport/parser-ready': 11.0.1
+      '@serialport/parser-regex': 11.0.1
+      '@serialport/parser-slip-encoder': 11.0.1
+      '@serialport/parser-spacepacket': 11.0.1
+      '@serialport/stream': 11.0.1
+      debug: 4.3.4
+    transitivePeerDependencies:
+      - supports-color
+    dev: false
