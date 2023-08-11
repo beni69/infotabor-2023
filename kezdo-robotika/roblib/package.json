@@ -9,6 +9,10 @@
         "start": "node ."
     },
     "dependencies": {
-        "@kareszklub/roblib-client-node": "^0.0.2"
+        "@kareszklub/roblib-client-node": "^0.0.3",
+        "dequal": "^2.0.3"
+    },
+    "devDependencies": {
+        "@types/node": "^20.4.9"
     }
 }

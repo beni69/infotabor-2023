@@ -75,15 +75,6 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "baf1de4339761588bc0619e3cbc0120ee582ebb74b53b4efbf79117bd2da40fd"
 
 [[package]]
-name = "controller-rs"
-version = "0.1.0"
-dependencies = [
- "anyhow",
- "roblib-client",
- "serialport",
-]
-
-[[package]]
 name = "env_logger"
 version = "0.10.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -303,6 +294,15 @@ dependencies = [
  "log",
  "roblib",
  "serde",
+]
+
+[[package]]
+name = "roblib-ctrl-controller"
+version = "0.1.0"
+dependencies = [
+ "anyhow",
+ "roblib-client",
+ "serialport",
 ]
 
 [[package]]
