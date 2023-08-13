@@ -1,0 +1,10 @@
+[package]
+name = "roblib-tui"
+version = "0.1.0"
+authors = ["beni69 (https://github.com/beni69)"]
+edition = "2021"
+
+[dependencies]
+crossterm = "0.27.0"
+roblib-client = { version = "0.1.0", features = ["roland"] }
+tui = { package = "ratatui", version = "0.22.0" }
