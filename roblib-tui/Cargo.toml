@@ -1,10 +1,17 @@
 [package]
 name = "roblib-tui"
 version = "0.1.0"
-authors = ["beni69 (https://github.com/beni69)"]
 edition = "2021"
 
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
 [dependencies]
-crossterm = "0.27.0"
-roblib-client = { version = "0.1.0", features = ["roland"] }
-tui = { package = "ratatui", version = "0.22.0" }
+anyhow = "1.0.72"
+clap = { version = "4.3.21", features = ["derive"] }
+crossterm = { version = "0.27.0", features = ["event-stream"] }
+futures = "0.3.28"
+log = "0.4.20"
+ratatui = "0.22.0"
+roblib-client = { git = "https://github.com/kareszklub/roblib-rs", features = ["roland", "async", "gpio"] }
+tokio = { version = "1.30.0", features = ["rt"] }
+tui-input = "0.8.0"

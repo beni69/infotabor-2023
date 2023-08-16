@@ -1,42 +1,116 @@
-use roblib_client::transports::tcp::Tcp;
-use roblib_client::Robot;
-use roblib_tui::app::{App, AppResult};
-use roblib_tui::event::{Event, EventHandler};
-use roblib_tui::handler::handle_key_events;
-use roblib_tui::tui::Tui;
-use std::io;
-use std::sync::Arc;
-use tui::backend::CrosstermBackend;
-use tui::Terminal;
+mod render;
 
-fn main() -> AppResult<()> {
-    let robot = Arc::new(Robot::new(Tcp::connect("localhost:1110")?));
+use anyhow::Result;
+use clap::Parser;
+use roblib_client::{
+    roblib::cmd::Concrete,
+    transports::{tcp::TcpAsync, TransportAsync},
+    RobotAsync,
+};
 
-    // Create an application.
-    let mut app = App::new(robot);
+#[derive(Debug, Parser)]
+#[command(author, version)]
+struct Args {
+    #[arg(short, long)]
+    exec: Option<String>,
 
-    // Initialize the terminal user interface.
-    let backend = CrosstermBackend::new(io::stderr());
-    let terminal = Terminal::new(backend)?;
-    let events = EventHandler::new(&app, 250);
-    let mut tui = Tui::new(terminal, events);
-    tui.init()?;
+    #[arg(short, long)]
+    shell: bool,
+}
 
-    // Start the main loop.
-    while app.running {
-        // Render the user interface.
-        tui.draw(&mut app)?;
-        // Handle events.
-        match tui.events.next()? {
-            Event::Tick => app.tick(),
-            Event::Key(key_event) => handle_key_events(key_event, &mut app)?,
-            Event::Mouse(_) => {}
-            Event::Resize(_, _) => {}
-            Event::Track()
+#[tokio::main(flavor = "current_thread")]
+async fn main() -> Result<()> {
+    let args = Args::parse();
+
+    let robot = RobotAsync::new(TcpAsync::connect("localhost:1110").await?);
+
+    if let Some(txt) = args.exec {
+        let cmd: Concrete = roblib_client::roblib::text_format::de::from_str(&txt)?;
+        dbg!(&cmd);
+        let ret = execute(cmd, &robot.transport).await?;
+        if let Some(s) = ret {
+            println!("{s}");
         }
+        // needed to ensure send before exit
+        tokio::task::yield_now().await;
+        return Ok(());
     }
 
-    // Exit the user interface.
-    tui.exit()?;
+    let (h1, h2) = render::TUI::new(robot).await?.spawn();
+    let (h1, h2) = tokio::join!(h1, h2);
+    h1??;
+    h2??;
+
     Ok(())
+}
+
+// L workaround
+pub(crate) async fn execute(cmd: Concrete, robot: &impl TransportAsync) -> Result<Option<String>> {
+    Ok(match cmd {
+        Concrete::MoveRobot(c) => {
+            robot.cmd(c).await?;
+            None
+        }
+        Concrete::MoveRobotByAngle(c) => {
+            robot.cmd(c).await?;
+            None
+        }
+        Concrete::StopRobot(c) => {
+            robot.cmd(c).await?;
+            None
+        }
+        Concrete::Led(c) => {
+            robot.cmd(c).await?;
+            None
+        }
+        Concrete::RolandServo(c) => {
+            robot.cmd(c).await?;
+            None
+        }
+        Concrete::Buzzer(c) => {
+            robot.cmd(c).await?;
+            None
+        }
+        Concrete::TrackSensor(c) => Some(format!("{:?}", robot.cmd(c).await?)),
+        Concrete::UltraSensor(c) => Some(format!("{}", robot.cmd(c).await?)),
+
+        Concrete::PinMode(c) => {
+            robot.cmd(c).await?;
+            None
+        }
+        Concrete::ReadPin(c) => Some(format!("{}", robot.cmd(c).await?)),
+        Concrete::WritePin(c) => {
+            robot.cmd(c).await?;
+            None
+        }
+        Concrete::Pwm(c) => {
+            robot.cmd(c).await?;
+            None
+        }
+        Concrete::Servo(c) => {
+            robot.cmd(c).await?;
+            None
+        }
+
+        Concrete::Subscribe(_) => Some(format!("Subscribe no supported")),
+        Concrete::Unsubscribe(_) => Some(format!("Unsubscribe no supported")),
+
+        Concrete::Nop(c) => {
+            robot.cmd(c).await?;
+            None
+        }
+        Concrete::GetUptime(c) => Some(format!("{:?}", robot.cmd(c).await?)),
+
+        // Concrete::GetPosition(c) => {
+        //     if let Some(p) = robot.cmd(c).await? {
+        //         println!("{}", p)
+        //     } else {
+        //         println!("<")
+        //     }
+        // }
+        Concrete::Abort(c) => {
+            robot.cmd(c).await?;
+            None
+        }
+    })
 }
