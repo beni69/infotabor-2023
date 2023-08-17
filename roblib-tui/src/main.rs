@@ -18,11 +18,13 @@ struct Args {
     shell: bool,
 }
 
+const IP: &str = "10.0.0.236:1110";
+
 #[tokio::main(flavor = "current_thread")]
 async fn main() -> Result<()> {
     let args = Args::parse();
 
-    let robot = RobotAsync::new(TcpAsync::connect("localhost:1110").await?);
+    let robot = RobotAsync::new(TcpAsync::connect(IP).await?);
 
     if let Some(txt) = args.exec {
         let cmd: Concrete = roblib_client::roblib::text_format::de::from_str(&txt)?;

@@ -42,7 +42,7 @@ struct State {
     redrive: bool,
 
     track: [bool; 4],
-    ultra: Vec<f64>,
+    ultra: Vec<u64>,
 }
 #[derive(Debug, Clone)]
 pub enum Msg {
@@ -52,10 +52,13 @@ pub enum Msg {
 
 impl TUI {
     pub async fn new(robot: Robot) -> Result<Self> {
+        let mut s = State::default();
+        s.ultra = vec![0; 200];
+
         Ok(Self {
             term: setup_terminal()?,
             robot,
-            s: State::default(),
+            s,
         })
     }
 
@@ -194,7 +197,8 @@ impl TUI {
                         self.s.track = t;
                     }
                     Msg::Roblib(ConcreteValue::UltraSensor(u)) => {
-                        self.s.ultra.push(u);
+                        self.s.ultra.pop();
+                        self.s.ultra.insert(0, (u * 1000.) as u64);
                     }
 
                     _ => (),
@@ -273,7 +277,7 @@ impl TUI {
 
             let speed = Gauge::default()
                 .block(Block::default().borders(Borders::ALL).title("Speed"))
-                .gauge_style(Style::default().fg(speed_color(s.speed)))
+                .gauge_style(Style::default().fg(c))
                 .use_unicode(true)
                 .ratio(s.speed / 100.);
             f.render_widget(speed, layout[1]);
@@ -294,6 +298,13 @@ impl TUI {
             .alignment(Alignment::Center);
             f.render_widget(track, layout[2]);
         }
+
+        let data = &s.ultra.iter().copied().rev().take(20).collect::<Vec<_>>();
+        let spark = Sparkline::default()
+            .data(data)
+            .block(Block::default().borders(Borders::ALL).title("Ultra Sensor"));
+        // let spark = Paragraph::new(format!("{:?}", data));
+        f.render_widget(spark, layout[1]);
     }
     fn render_ultra(_s: &State, f: &mut Frame<impl Backend>, frame: Rect) {
         let layout = Layout::default()
@@ -362,8 +373,6 @@ impl TUI {
         let text = ctrls
             .map(|c| {
                 Line::from(vec![
-                    // Span::styled(c.0, i),
-                    // Span::raw(": "),
                     Span::styled(c.0.to_owned() + ": ", i),
                     Span::styled(c.1, b),
                 ])
